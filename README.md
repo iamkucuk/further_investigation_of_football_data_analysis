@@ -1,2 +1,2 @@
-# 476_573_Further_Investigatian_of_FootballData_Analysis-F.I.F.A-
-Data Mining Project for BIL573 Course
+# BIL 573 Term Project - Data Mining Project for BIL573 Course
+# Further Investigatian of FootballData Analysis -F.I.F.A-
