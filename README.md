@@ -4,7 +4,7 @@
 
 ## Usage of the EDA notebook
 
-EDA process depends on a sqlite database. Database couldn't be uploaded to github since there is a file size limit. 
+EDA process depends on a sqlite database. The database file should be located in "data" folder. Database couldn't be uploaded to github since there is a file size limit. 
 The dataset can be found at there: https://drive.google.com/open?id=1EFquJdee4Ogi0R0vhQ1n9HuSziUHS2QB
 
 The output of the preprocessed database can be found at data.csv file which is located in the main directory of this repo.
