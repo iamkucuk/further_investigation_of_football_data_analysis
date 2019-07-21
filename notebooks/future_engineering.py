@@ -145,6 +145,7 @@ df = df.append(pd.merge(
         suffixes=("", "_home")
     )
 )
+
 #%%
 # For away team
 merged_df = pd.DataFrame()
@@ -167,4 +168,10 @@ merged_df = merged_df.append(pd.merge(
 
 #%%
 merged_df.to_csv("../match_data.csv", index=False)
+#%%
+dropped_df = merged_df.dropna()
+
+#%%
+df = pd.read_json("../sofifa/output.jl", lines=True)
+
 #%%
