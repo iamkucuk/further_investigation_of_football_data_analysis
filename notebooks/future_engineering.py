@@ -35,10 +35,10 @@ teams = teams.drop_duplicates().reset_index().drop("index", axis=1)
 
 #%%
 teams_with_api = pd.merge(teams,
-                 team_attributes,
-                 how="left",
-                 left_on="home_team_api_id",
-                 right_on="team_api_id")
+                team_attributes,
+                how="left",
+                left_on="home_team_api_id",
+                right_on="team_api_id")
 teams_with_api = teams_with_api[["league_id", "country", "league", "team_api_id", "team_fifa_api_id", "home_team_lname"]]
 teams = teams_with_api.drop_duplicates().reset_index().drop("index", axis=1)
 
@@ -88,21 +88,21 @@ teams_complete = pd.merge(teams, expanded_df, how="outer", left_on="team_fifa_ap
 
 
 #%%
-teams_complete.dropna(inplace=True) 
+teams_complete.dropna(inplace=True)
 
 
 #%%
 teams_complete = teams_complete[["Date", "ID","team_api_id", "home_team_lname", "league_id", "league",
-                                 "OVA","ATT","MID","DEF","Transfer Budget",
-                                    "Speed","Dribbling","BuildPassing","BuildPositioning",
-                                    "Crossing","ChancePassing","Shooting","ChancePositioning",
-                                    "Aggression","Pressure","Team Width","Defender Line",
-                                    "DP","IP","SAA","TAA"]]
+                                "OVA","ATT","MID","DEF","Transfer Budget",
+                                "Speed","Dribbling","BuildPassing","BuildPositioning",
+                                "Crossing","ChancePassing","Shooting","ChancePositioning",
+                                "Aggression","Pressure","Team Width","Defender Line",
+                                "DP","IP","SAA","TAA"]]
 
 
 #%%
 #teams_complete.to_csv("../team_data.csv", index=False)
-
+#
 
 
 
