@@ -13,7 +13,7 @@ import pandas as pd
 import numpy as np
 from tqdm.auto import tqdm
 import matplotlib.pyplot as plt
-
+from datetime import datetime
 
 #%%
 with sqlite3.connect('../data/database.sqlite') as con:
@@ -104,5 +104,67 @@ teams_complete = teams_complete[["Date", "ID","team_api_id", "home_team_lname", 
 #teams_complete.to_csv("../team_data.csv", index=False)
 #
 
+#%%
+teams_complete = pd.read_csv("../team_data.csv")
+teams_complete = teams_complete.rename(columns = {"Date" : "date"})
+#%%
+match_goal_statistics = pd.read_csv("../data/match_goal_statistics.csv")
 
+#%%
+teams_complete.sort_values("date",
+                        inplace = True)
+match_goal_statistics.sort_values("date",
+                        inplace = True)
 
+#%%
+teams_complete["date"] = teams_complete.agg(
+            lambda x: datetime.strptime(x["date"], "%Y-%m-%d"), axis = 1)
+
+#%%
+match_goal_statistics["date"] = match_goal_statistics.agg(
+            lambda x: datetime.strptime(x["date"], "%Y-%m-%d %H:%M:%S"), axis = 1)
+dates = list(teams_complete["date"].unique())
+#grouped_matches = match_goal_statistics.groupby("date")
+
+#%%
+# For home team
+df = pd.DataFrame()
+for i in range(len(dates) - 1):
+    df = df.append(pd.merge(
+        match_goal_statistics.loc[(match_goal_statistics["date"] > dates[i])
+                                & (match_goal_statistics["date"] < dates[i + 1])],
+        teams_complete.loc[teams_complete["date"] == dates[i]], how = "left",
+        left_on="home_team_api_id", right_on="team_api_id",
+        suffixes=("", "_home")
+        )
+    )
+df = df.append(pd.merge(
+        match_goal_statistics.loc[(match_goal_statistics["date"] > dates[-1])],
+        teams_complete.loc[teams_complete["date"] == dates[i]], how = "left",
+        left_on="home_team_api_id", right_on="team_api_id",
+        suffixes=("", "_home")
+    )
+)
+#%%
+# For away team
+merged_df = pd.DataFrame()
+for i in range(len(dates) - 1):
+    merged_df = merged_df.append(pd.merge(
+        df.loc[(df["date"] > dates[i])
+                                & (df["date"] < dates[i + 1])],
+        teams_complete.loc[teams_complete["date"] == dates[i]], how = "left",
+        left_on="away_team_api_id", right_on="team_api_id",
+        suffixes=("", "_away")
+        )
+    )
+merged_df = merged_df.append(pd.merge(
+        df.loc[(df["date"] > dates[-1])],
+        teams_complete.loc[teams_complete["date"] == dates[i]], how = "left",
+        left_on="away_team_api_id", right_on="team_api_id",
+        suffixes=("", "_away")
+    )
+)
+
+#%%
+merged_df.to_csv("../match_data.csv", index=False)
+#%%
