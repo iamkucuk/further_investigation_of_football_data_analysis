@@ -48,17 +48,19 @@ class SofifaSpider(CrawlSpider):
                 else:
                     col_selector = col_selector.css("td.col::text")
                 row_list.append(col_selector.get())
+            row_list.append(team_selector.css("td.col-name-wide > div > a::text").get())
             team_list.append(row_list)
 
 
         for temp_list in team_list:
             item = SofifaItem()
+            item["name"] = row_list[-1]
             item["date"] = date_string
             item["basic"] = temp_list[:6]
             item["build_up_play"] = temp_list[6:10]
             item["chance_creation"] = temp_list[10:14]
             item["defence"] = temp_list[14:18]
-            item["special"] = temp_list[18:]
+            item["special"] = temp_list[18:-1]
 
             yield item
 

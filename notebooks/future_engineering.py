@@ -175,3 +175,71 @@ dropped_df = merged_df.dropna()
 df = pd.read_json("../sofifa/output.jl", lines=True)
 
 #%%
+# ##Beggining of the new dataset
+# Please proceed from here
+
+#%% Change working directory from the workspace root to the ipynb file location. Turn this addition off with the DataScience.changeDirOnImportExport setting
+# ms-python.python added
+import os
+try:
+	os.chdir(os.path.join(os.getcwd(), 'notebooks'))
+	print(os.getcwd())
+except:
+	pass
+
+#%%
+import sqlite3
+import pandas as pd
+import numpy as np
+from tqdm.auto import tqdm
+import matplotlib.pyplot as plt
+from datetime import datetime
+#%%
+fifa_df = pd.read_json("../sofifa.jl", lines=True)
+match_df = pd.read_json("../worldfootball.jl", lines=True)
+#%%
+match_df = match_df[match_df["season"] != 2019]
+
+#%%
+expanded_fifa_df = pd.DataFrame(columns=["Date", "ID","OVA","ATT","MID","DEF","Transfer Budget",
+                                    "Speed","Dribbling","BuildPassing","BuildPositioning",
+                                    "Crossing","ChancePassing","Shooting","ChancePositioning",
+                                    "Aggression","Pressure","Team Width","Defender Line",
+                                    "DP","IP","SAA","TAA"])
+# expanded_fifa_df["Date"] = fifa_df.agg(
+#             lambda x: datetime.strptime(x["date"], "%Y-%m-%d"), axis = 1)
+expanded_fifa_df["ID"] = pd.to_numeric(fifa_df.agg(lambda x:x[0][0], axis=1))
+expanded_fifa_df["OVA"] = pd.to_numeric(fifa_df.agg(lambda x:x[0][1], axis=1))
+expanded_fifa_df["ATT"] = pd.to_numeric(fifa_df.agg(lambda x:x[0][2], axis=1))
+expanded_fifa_df["MID"] = pd.to_numeric(fifa_df.agg(lambda x:x[0][3], axis=1))
+expanded_fifa_df["DEF"] = pd.to_numeric(fifa_df.agg(lambda x:x[0][4], axis=1))
+expanded_fifa_df["Transfer Budget"] = fifa_df.agg(lambda x:x[0][5], axis=1)
+expanded_fifa_df["Speed"] = fifa_df.agg(lambda x:x[1][0], axis=1)
+expanded_fifa_df["Dribbling"] = fifa_df.agg(lambda x:x[1][0], axis=1)
+expanded_fifa_df["BuildPassing"] = fifa_df.agg(lambda x:x[1][0], axis=1)
+expanded_fifa_df["BuildPositioning"] = fifa_df.agg(lambda x:x[1][0], axis=1)
+expanded_fifa_df["Crossing"] = fifa_df.agg(lambda x:x[2][0], axis=1)
+expanded_fifa_df["ChancePassing"] = fifa_df.agg(lambda x:x[2][0], axis=1)
+expanded_fifa_df["Shooting"] = fifa_df.agg(lambda x:x[2][0], axis=1)
+expanded_fifa_df["ChancePositioning"] = fifa_df.agg(lambda x:x[2][0], axis=1)
+expanded_fifa_df["Aggression"] = fifa_df.agg(lambda x:x[4][0], axis=1)
+expanded_fifa_df["Pressure"] = fifa_df.agg(lambda x:x[4][1], axis=1)
+expanded_fifa_df["Team Width"] = fifa_df.agg(lambda x:x[4][2], axis=1)
+expanded_fifa_df["Defender Line"] = fifa_df.agg(lambda x:x[4][3], axis=1)
+expanded_fifa_df["DP"] = pd.to_numeric(fifa_df.agg(lambda x:x[5][0], axis=1))
+expanded_fifa_df["IP"] = pd.to_numeric(fifa_df.agg(lambda x:x[5][1], axis=1))
+expanded_fifa_df["SAA"] = pd.to_numeric(fifa_df.agg(lambda x:x[5][2], axis=1))
+expanded_fifa_df["TAA"] = pd.to_numeric(fifa_df.agg(lambda x:x[5][3], axis=1))
+
+#%%
+expanded_fifa_df["Date"] = fifa_df["date"]
+# teams_editted.drop_duplicates(inplace = True)
+#%%
+fifa_df = pd.merge(expanded_fifa_df, teams, how = "left", left_on="ID", right_on="team_fifa_api_id")
+fifa_df.drop(labels = ["id", "team_api_id", "team_fifa_api_id", "team_short_name"], inplace = True, axis = 1)
+#%%
+debug_df = fifa_df[fifa_df["team_long_name"].isnull()]
+print(debug_df["ID"].drop_duplicates())
+#%%
+
+#%%
