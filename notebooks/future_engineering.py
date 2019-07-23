@@ -201,7 +201,7 @@ match_df = pd.read_json("../worldfootball.jl", lines=True)
 match_df = match_df[match_df["season"] != 2019]
 
 #%%
-expanded_fifa_df = pd.DataFrame(columns=["Date", "ID","OVA","ATT","MID","DEF","Transfer Budget",
+expanded_fifa_df = pd.DataFrame(columns=["Date","Team Name", "ID","OVA","ATT","MID","DEF","Transfer Budget",
                                     "Speed","Dribbling","BuildPassing","BuildPositioning",
                                     "Crossing","ChancePassing","Shooting","ChancePositioning",
                                     "Aggression","Pressure","Team Width","Defender Line",
@@ -226,20 +226,25 @@ expanded_fifa_df["Aggression"] = fifa_df.agg(lambda x:x[4][0], axis=1)
 expanded_fifa_df["Pressure"] = fifa_df.agg(lambda x:x[4][1], axis=1)
 expanded_fifa_df["Team Width"] = fifa_df.agg(lambda x:x[4][2], axis=1)
 expanded_fifa_df["Defender Line"] = fifa_df.agg(lambda x:x[4][3], axis=1)
-expanded_fifa_df["DP"] = pd.to_numeric(fifa_df.agg(lambda x:x[5][0], axis=1))
-expanded_fifa_df["IP"] = pd.to_numeric(fifa_df.agg(lambda x:x[5][1], axis=1))
-expanded_fifa_df["SAA"] = pd.to_numeric(fifa_df.agg(lambda x:x[5][2], axis=1))
-expanded_fifa_df["TAA"] = pd.to_numeric(fifa_df.agg(lambda x:x[5][3], axis=1))
-
+expanded_fifa_df["DP"] = pd.to_numeric(fifa_df.agg(lambda x:x[6][0], axis=1))
+expanded_fifa_df["IP"] = pd.to_numeric(fifa_df.agg(lambda x:x[6][1], axis=1))
+expanded_fifa_df["SAA"] = pd.to_numeric(fifa_df.agg(lambda x:x[6][2], axis=1))
+expanded_fifa_df["TAA"] = pd.to_numeric(fifa_df.agg(lambda x:x[6][3], axis=1))
 #%%
+expanded_fifa_df["Team Name"] = fifa_df["name"]
 expanded_fifa_df["Date"] = fifa_df["date"]
 # teams_editted.drop_duplicates(inplace = True)
 #%%
-fifa_df = pd.merge(expanded_fifa_df, teams, how = "left", left_on="ID", right_on="team_fifa_api_id")
-fifa_df.drop(labels = ["id", "team_api_id", "team_fifa_api_id", "team_short_name"], inplace = True, axis = 1)
+name_list = list(set(match_df["team"]))
+name_list2 = list(set(expanded_fifa_df["Team Name"]))
+name_list3 = []
+for name in name_list:
+    if name not in name_list2:
+        name_list3.append(name)
 #%%
 debug_df = fifa_df[fifa_df["team_long_name"].isnull()]
 print(debug_df["ID"].drop_duplicates())
 #%%
-
+expanded_fifa_df.to_csv("expanded_fifa.csv")
+match_df.to_csv("matches_editted.csv")
 #%%
