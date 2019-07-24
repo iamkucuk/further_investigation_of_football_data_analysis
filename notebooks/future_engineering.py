@@ -235,8 +235,8 @@ expanded_fifa_df["Team Name"] = fifa_df["name"]
 expanded_fifa_df["Date"] = fifa_df["date"]
 # teams_editted.drop_duplicates(inplace = True)
 #%%
-name_list = list(set(match_df["team"]))
-name_list2 = list(set(expanded_fifa_df["Team Name"]))
+name_list = list(set(expanded_fifa_df["Team Name"]))
+name_list2 = list(set(match_df["team"]))
 name_list3 = []
 for name in name_list:
     if name not in name_list2:
