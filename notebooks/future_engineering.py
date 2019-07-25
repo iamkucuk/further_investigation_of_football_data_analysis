@@ -241,9 +241,7 @@ name_list3 = []
 for name in name_list:
     if name not in name_list2:
         name_list3.append(name)
-#%%
-debug_df = fifa_df[fifa_df["team_long_name"].isnull()]
-print(debug_df["ID"].drop_duplicates())
+
 #%%
 expanded_fifa_df.to_csv("expanded_fifa.csv")
 match_df.to_csv("matches_editted.csv")
