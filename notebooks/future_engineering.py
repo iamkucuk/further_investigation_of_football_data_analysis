@@ -175,6 +175,10 @@ dropped_df = merged_df.dropna()
 df = pd.read_json("../sofifa/output.jl", lines=True)
 
 #%%
+#import pandas as pd
+
+
+#%%
 # ##Beggining of the new dataset
 # Please proceed from here
 
@@ -195,11 +199,16 @@ from tqdm.auto import tqdm
 import matplotlib.pyplot as plt
 from datetime import datetime
 #%%
-fifa_df = pd.read_json("../sofifa.jl", lines=True)
-match_df = pd.read_json("../worldfootball.jl", lines=True)
-#%%
+fifatable_df = pd.read_csv("fifatable.csv")
+match_df = pd.read_json("../matchresults.jl", lines=True)
 match_df = match_df[match_df["season"] != 2019]
-
+#%%
+fifa_df = pd.read_json("../sofifa.jl", lines=True)
+table_df = pd.read_json("../worldfootball.jl", lines=True)
+match_df = pd.read_json("../matchresults.jl", lines=True)
+#%%
+match_df = match_df[(match_df["season"] < 2019) & (match_df["season"] > 2006)]
+table_df = table_df[(table_df["season"] < 2019) & (table_df["season"] > 2006)]
 #%%
 expanded_fifa_df = pd.DataFrame(columns=["Date","Team Name", "ID","OVA","ATT","MID","DEF","Transfer Budget",
                                     "Speed","Dribbling","BuildPassing","BuildPositioning",
@@ -246,3 +255,44 @@ for name in name_list:
 expanded_fifa_df.to_csv("expanded_fifa.csv")
 match_df.to_csv("matches_editted.csv")
 #%%
+dates = list(set(expanded_fifa_df["Date"].values))
+dates.sort()
+#%%
+df = pd.DataFrame()
+for i in tqdm(range(len(dates) - 1)):
+    df = df.append(pd.merge(
+        table_df.loc[(table_df["date"] >= dates[i])
+                & (table_df["date"] <= dates[i + 1])],
+        expanded_fifa_df.loc[expanded_fifa_df["Date"] == dates[i]], how = "left",
+        left_on="team", right_on="Team Name"
+        )
+    )
+df = df.append(pd.merge(
+        table_df.loc[(table_df["date"] >= dates[-1])],
+        expanded_fifa_df.loc[expanded_fifa_df["Date"] == dates[i]], how = "left",
+        left_on="team", right_on="Team Name"
+    )
+)
+#%%
+df = df.drop_duplicates(["team", "season", "week"])
+#%%
+sorted_df = df.sort_values(["team", "date"])
+filled_df = sorted_df.fillna(method='ffill')
+filled_df = filled_df.fillna(method='bfill')
+fifatable_df = filled_df
+#%%
+home_df = pd.merge(match_df, fifatable_df, how = "left", right_on = ["team", "season", "week"], 
+                   left_on = ["home_team", "season", "week"], suffixes = ("", "_home"))
+#home_df = home_df[home_df["season"] != 2005]
+home_df = home_df.drop_duplicates(["home_team", "season", "week"])
+#%%
+whole_df = pd.merge(fifatable_df, home_df, how = "right", left_on = ["team", "season", "week"],
+                    right_on = ["away_team", "season", "week"], suffixes = ("", "_away"))
+#%%
+sorted_df = df.sort_values(["team", "date"])
+whole_df.to_csv("whole_dataset.csv", index = False)
+whole_df.to_excel("whole_dataset.xlsx", index = False)
+#%%
+whole_df = pd.read_csv("whole_dataset.csv")
+#%%
+sorted_df = whole_df.sort_values(["team", "season", "week"])
