@@ -296,3 +296,11 @@ whole_df.to_excel("whole_dataset.xlsx", index = False)
 whole_df = pd.read_csv("whole_dataset.csv")
 #%%
 sorted_df = whole_df.sort_values(["team", "season", "week"])
+#%%
+sorted_df["win"] = sorted_df.agg(lambda x: x["home_score_final"] - x["away_score_final"] > 0, axis = 1)
+sorted_df["draw"] = sorted_df.agg(lambda x: x["home_score_final"] - x["away_score_final"] == 0, axis = 1)
+sorted_df["lose"] = sorted_df.agg(lambda x: x["home_score_final"] - x["away_score_final"] < 0, axis = 1)
+#%%
+sorted_df["outcome_of_match"] = sorted_df.agg(lambda x: 1 if x["win"] else 0 if x["draw"] else -1, axis = 1)
+#%%
+sorted_df.to_csv("updated_dataset.csv", index=False)
