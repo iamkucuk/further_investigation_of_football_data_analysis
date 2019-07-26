@@ -304,3 +304,11 @@ sorted_df["lose"] = sorted_df.agg(lambda x: x["home_score_final"] - x["away_scor
 sorted_df["outcome_of_match"] = sorted_df.agg(lambda x: 1 if x["win"] else 0 if x["draw"] else -1, axis = 1)
 #%%
 sorted_df.to_csv("updated_dataset.csv", index=False)
+
+#%%
+df = pd.read_csv("last_updated_dataset.csv")
+#%%
+df.drop(columns = ["team_home", "Date", "date_away", "league_away", "date_home",
+                   "league_home", "Date_away", ], inplace = True)
+#%%
+df.to_csv("dropped_unnecessary.csv", index = False)
