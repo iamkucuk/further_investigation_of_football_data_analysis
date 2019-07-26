@@ -308,7 +308,8 @@ sorted_df.to_csv("updated_dataset.csv", index=False)
 #%%
 df = pd.read_csv("last_updated_dataset.csv")
 #%%
-df.drop(columns = ["team_home", "Date", "date_away", "league_away", "date_home",
+df.drop(columns = ["Unnamed: 0", "Date", "date_away", "league_away", "date_home",
                    "league_home", "Date_away", ], inplace = True)
 #%%
 df.to_csv("dropped_unnecessary.csv", index = False)
+df.to_excel("dropped_unnecessary.xlsx", index = False)
