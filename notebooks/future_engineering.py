@@ -11,7 +11,7 @@ except:
 import sqlite3
 import pandas as pd
 import numpy as np
-from tqdm.auto import tqdm
+from tqdm import tqdm
 import matplotlib.pyplot as plt
 from datetime import datetime
 
@@ -203,9 +203,9 @@ fifatable_df = pd.read_csv("fifatable.csv")
 match_df = pd.read_json("../matchresults.jl", lines=True)
 match_df = match_df[match_df["season"] != 2019]
 #%%
-fifa_df = pd.read_json("../sofifa.jl", lines=True)
-table_df = pd.read_json("../worldfootball.jl", lines=True)
-match_df = pd.read_json("../matchresults.jl", lines=True)
+fifa_df = pd.read_json("sofifa.jl", lines=True)
+table_df = pd.read_json("worldfootball.jl", lines=True)
+match_df = pd.read_json("matchresults.jl", lines=True)
 #%%
 match_df = match_df[(match_df["season"] < 2019) & (match_df["season"] > 2006)]
 table_df = table_df[(table_df["season"] < 2019) & (table_df["season"] > 2006)]
@@ -258,6 +258,8 @@ match_df.to_csv("matches_editted.csv")
 dates = list(set(expanded_fifa_df["Date"].values))
 dates.sort()
 #%%
+#table_df["week"] = table_df["week"] + 1
+#%%
 df = pd.DataFrame()
 for i in tqdm(range(len(dates) - 1)):
     df = df.append(pd.merge(
@@ -303,13 +305,17 @@ sorted_df["lose"] = sorted_df.agg(lambda x: x["home_score_final"] - x["away_scor
 #%%
 sorted_df["outcome_of_match"] = sorted_df.agg(lambda x: 1 if x["win"] else 0 if x["draw"] else -1, axis = 1)
 #%%
+sorted_df = sorted_df[sorted_df["week"] > 1]
+#%%
 sorted_df.to_csv("updated_dataset.csv", index=False)
 
 #%%
 df = pd.read_csv("last_updated_dataset.csv")
 #%%
-df.drop(columns = ["Unnamed: 0", "Date", "date_away", "league_away", "date_home",
+sorted_df.drop(columns = ["Date", "date_away", "league_away", "date_home",
                    "league_home", "Date_away", ], inplace = True)
 #%%
-df.to_csv("dropped_unnecessary.csv", index = False)
-df.to_excel("dropped_unnecessary.xlsx", index = False)
+filled_df = sorted_df.fillna(method='ffill')
+#%%
+filled_df.to_csv("dropped_unnecessary.csv", index = False)
+filled_df.to_excel("dropped_unnecessary.xlsx", index = False)
