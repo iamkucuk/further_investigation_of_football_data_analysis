@@ -1,0 +1,98 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.RandomForest -P 100 -I 100 -num-slots 1 -K 0 -M 1.0 -V 0.001 -S 1
+Relation:     mydata
+Instances:    27914
+Attributes:   53
+              home_team_goals_difference
+              away_team_goals_difference
+              games_won_home_team
+              games_won_away_team
+              games_against_won
+              games_against_lost
+              OVA_home
+              ATT_home
+              MID_home
+              DEF_home
+              TransferBudget_home
+              Speed_home
+              Dribbling_home
+              BuildPassing_home
+              BuildPositioning_home
+              Crossing_home
+              ChancePassing_home
+              Shooting_home
+              ChancePositioning_home
+              Aggression_home
+              Pressure_home
+              TeamWidth_home
+              DefenderLine_home
+              DP_home
+              IP_home
+              SAA_home
+              TAA_home
+              OVA_away
+              ATT_away
+              MID_away
+              DEF_away
+              TransferBudget_away
+              Speed_away
+              Dribbling_away
+              BuildPassing_away
+              BuildPositioning_away
+              Crossing_away
+              ChancePassing_away
+              Shooting_away
+              ChancePositioning_away
+              Aggression_away
+              Pressure_away
+              TeamWidth_away
+              DefenderLine_away
+              DP_away
+              IP_away
+              SAA_away
+              TAA_away
+              outcome_of_match
+              ova_diff
+              att_diff
+              mid_diff
+              def_diff
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Time taken to build model: 21.83 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances       16951               60.7258 %
+Incorrectly Classified Instances     10963               39.2742 %
+Kappa statistic                          0.358 
+Mean absolute error                      0.337 
+Root mean squared error                  0.4059
+Relative absolute error                 78.5662 %
+Root relative squared error             87.6584 %
+Total Number of Instances            27914     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,828    0,442    0,612      0,828    0,703      0,396    0,790     0,770     1
+                 0,289    0,061    0,619      0,289    0,394      0,306    0,709     0,539     0
+                 0,541    0,150    0,592      0,541    0,565      0,401    0,791     0,661     -1
+Weighted Avg.    0,607    0,261    0,608      0,607    0,584      0,374    0,770     0,679     
+
+=== Confusion Matrix ===
+
+     a     b     c   <-- classified as
+ 10550   681  1514 |     a = 1
+  3602  2061  1477 |     b = 0
+  3099   590  4340 |     c = -1
+

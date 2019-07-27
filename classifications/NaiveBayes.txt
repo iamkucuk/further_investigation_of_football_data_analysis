@@ -1,0 +1,410 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.bayes.NaiveBayes 
+Relation:     mydata
+Instances:    27914
+Attributes:   53
+              home_team_goals_difference
+              away_team_goals_difference
+              games_won_home_team
+              games_won_away_team
+              games_against_won
+              games_against_lost
+              OVA_home
+              ATT_home
+              MID_home
+              DEF_home
+              TransferBudget_home
+              Speed_home
+              Dribbling_home
+              BuildPassing_home
+              BuildPositioning_home
+              Crossing_home
+              ChancePassing_home
+              Shooting_home
+              ChancePositioning_home
+              Aggression_home
+              Pressure_home
+              TeamWidth_home
+              DefenderLine_home
+              DP_home
+              IP_home
+              SAA_home
+              TAA_home
+              OVA_away
+              ATT_away
+              MID_away
+              DEF_away
+              TransferBudget_away
+              Speed_away
+              Dribbling_away
+              BuildPassing_away
+              BuildPositioning_away
+              Crossing_away
+              ChancePassing_away
+              Shooting_away
+              ChancePositioning_away
+              Aggression_away
+              Pressure_away
+              TeamWidth_away
+              DefenderLine_away
+              DP_away
+              IP_away
+              SAA_away
+              TAA_away
+              outcome_of_match
+              ova_diff
+              att_diff
+              mid_diff
+              def_diff
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Naive Bayes Classifier
+
+                                     Class
+Attribute                                1             0            -1
+                                    (0.46)        (0.26)        (0.29)
+=======================================================================
+home_team_goals_difference
+  mean                               1.8528       -0.8069       -2.2911
+  std. dev.                          8.4314        7.3316        6.8229
+  weight sum                          12745          7140          8029
+  precision                          1.0303        1.0303        1.0303
+
+away_team_goals_difference
+  mean                              -1.2088        0.3237         2.851
+  std. dev.                          7.1441        7.7684        8.8378
+  weight sum                          12745          7140          8029
+  precision                          1.0317        1.0317        1.0317
+
+games_won_home_team
+  mean                               4.0359        3.4713        3.1354
+  std. dev.                          2.1287        1.8488        1.7057
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+games_won_away_team
+  mean                                3.366        3.7025         4.271
+  std. dev.                           1.809        1.9445        2.1873
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+games_against_won
+  mean                               0.9455        0.7808        0.6189
+  std. dev.                          0.9354        0.8346        0.7674
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+games_against_lost
+  mean                               0.7659        0.9256        1.0989
+  std. dev.                          0.8325        0.8903        0.9492
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+OVA_home
+  mean                              72.3289       70.8038       70.1105
+  std. dev.                          6.1221        5.6749        5.4513
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+ATT_home
+  mean                              71.0602       69.6325        69.026
+  std. dev.                          6.4681        5.9042        5.7976
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+MID_home
+  mean                              70.0806       68.6069       67.9903
+  std. dev.                          6.2764        5.8138        5.6253
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+DEF_home
+  mean                              69.6617       68.3448       67.7022
+  std. dev.                          6.0158        5.5654        5.4748
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+TransferBudget_home
+  mean                        14260415.3958  9087480.7727  7104139.1142
+  std. dev.                   21721877.4947 14976171.4531  11681760.757
+  weight sum                          12745          7140          8029
+  precision                     693063.5838   693063.5838   693063.5838
+
+Speed_home
+  Balanced                           8954.0        5184.0        5924.0
+  Fast                               1328.0         698.0         672.0
+  Slow                               2466.0        1261.0        1436.0
+  [total]                           12748.0        7143.0        8032.0
+
+Dribbling_home
+  Balanced                           8954.0        5184.0        5924.0
+  Fast                               1328.0         698.0         672.0
+  Slow                               2466.0        1261.0        1436.0
+  [total]                           12748.0        7143.0        8032.0
+
+BuildPassing_home
+  Balanced                           8954.0        5184.0        5924.0
+  Fast                               1328.0         698.0         672.0
+  Slow                               2466.0        1261.0        1436.0
+  [total]                           12748.0        7143.0        8032.0
+
+BuildPositioning_home
+  Balanced                           8954.0        5184.0        5924.0
+  Fast                               1328.0         698.0         672.0
+  Slow                               2466.0        1261.0        1436.0
+  [total]                           12748.0        7143.0        8032.0
+
+Crossing_home
+  Little                             2048.0        1055.0        1196.0
+  Lots                               1509.0         845.0         922.0
+  Normal                             9191.0        5243.0        5914.0
+  [total]                           12748.0        7143.0        8032.0
+
+ChancePassing_home
+  Little                             2048.0        1055.0        1196.0
+  Lots                               1509.0         845.0         922.0
+  Normal                             9191.0        5243.0        5914.0
+  [total]                           12748.0        7143.0        8032.0
+
+Shooting_home
+  Little                             2048.0        1055.0        1196.0
+  Lots                               1509.0         845.0         922.0
+  Normal                             9191.0        5243.0        5914.0
+  [total]                           12748.0        7143.0        8032.0
+
+ChancePositioning_home
+  Little                             2048.0        1055.0        1196.0
+  Lots                               1509.0         845.0         922.0
+  Normal                             9191.0        5243.0        5914.0
+  [total]                           12748.0        7143.0        8032.0
+
+Aggression_home
+  Contain                            2203.0        1153.0        1378.0
+  Double                              735.0         422.0         388.0
+  Press                              9810.0        5568.0        6266.0
+  [total]                           12748.0        7143.0        8032.0
+
+Pressure_home
+  Deep                               2606.0        1538.0        1749.0
+  High                                393.0         222.0         184.0
+  Medium                             9749.0        5383.0        6099.0
+  [total]                           12748.0        7143.0        8032.0
+
+TeamWidth_home
+  Narrow                             2002.0        1073.0        1257.0
+  Normal                            10047.0        5662.0        6349.0
+  Wide                                699.0         408.0         426.0
+  [total]                           12748.0        7143.0        8032.0
+
+DefenderLine_home
+  Cover                             12023.0        6787.0        7674.0
+  Offside Trap                        724.0         355.0         357.0
+  [total]                           12747.0        7142.0        8031.0
+
+DP_home
+  mean                              14.3073       12.8276       12.1152
+  std. dev.                          4.0046        3.8049        3.5914
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+IP_home
+  mean                              11.4304       10.1531        9.5713
+  std. dev.                          4.9071        4.6318        4.5392
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+SAA_home
+  mean                              29.1376       29.0045       29.0252
+  std. dev.                          3.2854         3.179        3.2303
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+TAA_home
+  mean                              25.9728       26.0293       26.0317
+  std. dev.                          1.5758        1.5776        1.5673
+  weight sum                          12745          7140          8029
+  precision                          0.0996        0.0996        0.0996
+
+OVA_away
+  mean                              70.5411       71.2539        72.581
+  std. dev.                          5.6026        5.8429        6.2263
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+ATT_away
+  mean                              69.3785       69.9917       71.3931
+  std. dev.                          5.8745        6.1397        6.5912
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+MID_away
+  mean                                68.32       69.0465       70.4075
+  std. dev.                          5.7276        5.9418        6.3949
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+DEF_away
+  mean                              68.0245          68.7       70.0137
+  std. dev.                          5.5163        5.7348        6.1285
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+TransferBudget_away
+  mean                         8136508.2105 10550144.4578 15547767.9127
+  std. dev.                   13297444.8297 17512049.2222 23088873.6575
+  weight sum                          12745          7140          8029
+  precision                     685142.8571   685142.8571   685142.8571
+
+Speed_away
+  Balanced                           9283.0        5180.0        5591.0
+  Fast                               1115.0         674.0         926.0
+  Slow                               2350.0        1289.0        1515.0
+  [total]                           12748.0        7143.0        8032.0
+
+Dribbling_away
+  Balanced                           9283.0        5180.0        5591.0
+  Fast                               1115.0         674.0         926.0
+  Slow                               2350.0        1289.0        1515.0
+  [total]                           12748.0        7143.0        8032.0
+
+BuildPassing_away
+  Balanced                           9283.0        5180.0        5591.0
+  Fast                               1115.0         674.0         926.0
+  Slow                               2350.0        1289.0        1515.0
+  [total]                           12748.0        7143.0        8032.0
+
+BuildPositioning_away
+  Balanced                           9283.0        5180.0        5591.0
+  Fast                               1115.0         674.0         926.0
+  Slow                               2350.0        1289.0        1515.0
+  [total]                           12748.0        7143.0        8032.0
+
+Crossing_away
+  Little                             1983.0        1056.0        1265.0
+  Lots                               1450.0         810.0         950.0
+  Normal                             9315.0        5277.0        5817.0
+  [total]                           12748.0        7143.0        8032.0
+
+ChancePassing_away
+  Little                             1983.0        1056.0        1265.0
+  Lots                               1450.0         810.0         950.0
+  Normal                             9315.0        5277.0        5817.0
+  [total]                           12748.0        7143.0        8032.0
+
+Shooting_away
+  Little                             1983.0        1056.0        1265.0
+  Lots                               1450.0         810.0         950.0
+  Normal                             9315.0        5277.0        5817.0
+  [total]                           12748.0        7143.0        8032.0
+
+ChancePositioning_away
+  Little                             1983.0        1056.0        1265.0
+  Lots                               1450.0         810.0         950.0
+  Normal                             9315.0        5277.0        5817.0
+  [total]                           12748.0        7143.0        8032.0
+
+Aggression_away
+  Contain                            2235.0        1167.0        1328.0
+  Double                              693.0         395.0         502.0
+  Press                              9820.0        5581.0        6202.0
+  [total]                           12748.0        7143.0        8032.0
+
+Pressure_away
+  Deep                               2802.0        1459.0        1609.0
+  High                                340.0         221.0         227.0
+  Medium                             9606.0        5463.0        6196.0
+  [total]                           12748.0        7143.0        8032.0
+
+TeamWidth_away
+  Narrow                             2026.0        1068.0        1246.0
+  Normal                            10002.0        5685.0        6329.0
+  Wide                                720.0         390.0         457.0
+  [total]                           12748.0        7143.0        8032.0
+
+DefenderLine_away
+  Cover                             12068.0        6783.0        7606.0
+  Offside Trap                        679.0         359.0         425.0
+  [total]                           12747.0        7142.0        8031.0
+
+DP_away
+  mean                              12.5199       13.2755       14.5595
+  std. dev.                          3.6611        3.9475        4.0941
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+IP_away
+  mean                               9.9423       10.4954       11.6754
+  std. dev.                           4.578        4.7838        4.9742
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+SAA_away
+  mean                              29.0598       29.0403       29.1247
+  std. dev.                          3.2351         3.233        3.2569
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+TAA_away
+  mean                              26.0502       26.0373       25.9081
+  std. dev.                          1.5826        1.5599        1.5699
+  weight sum                          12745          7140          8029
+  precision                          0.0979        0.0979        0.0979
+
+ova_diff
+  mean                               1.7878       -0.4501       -2.4705
+  std. dev.                          4.6128        4.3335        4.6285
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+att_diff
+  mean                               1.7208       -0.3676       -2.4221
+  std. dev.                          5.3278        5.0443        5.3124
+  weight sum                          12745          7140          8029
+  precision                          1.0233        1.0233        1.0233
+
+mid_diff
+  mean                               1.8033       -0.4502       -2.4762
+  std. dev.                          5.0549        4.8196         5.108
+  weight sum                          12745          7140          8029
+  precision                          1.0244        1.0244        1.0244
+
+def_diff
+  mean                               1.6373       -0.3552       -2.3115
+  std. dev.                          4.6364        4.4285        4.6642
+  weight sum                          12745          7140          8029
+  precision                               1             1             1
+
+
+
+Time taken to build model: 0.2 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances       13537               48.4954 %
+Incorrectly Classified Instances     14377               51.5046 %
+Kappa statistic                          0.2055
+Mean absolute error                      0.3507
+Root mean squared error                  0.5052
+Relative absolute error                 81.7529 %
+Root relative squared error            109.0837 %
+Total Number of Instances            27914     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,574    0,301    0,615      0,574    0,594      0,274    0,692     0,650     1
+                 0,286    0,233    0,297      0,286    0,291      0,054    0,559     0,287     0
+                 0,521    0,250    0,457      0,521    0,487      0,262    0,701     0,486     -1
+Weighted Avg.    0,485    0,269    0,488      0,485    0,486      0,214    0,661     0,510     
+
+=== Confusion Matrix ===
+
+    a    b    c   <-- classified as
+ 7312 2882 2551 |    a = 1
+ 2684 2042 2414 |    b = 0
+ 1888 1958 4183 |    c = -1
+
