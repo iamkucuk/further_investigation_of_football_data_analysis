@@ -1,0 +1,120 @@
+=== Run information ===
+
+Evaluator:    weka.attributeSelection.InfoGainAttributeEval 
+Search:       weka.attributeSelection.Ranker -T -1.7976931348623157E308 -N -1
+Relation:     mydata
+Instances:    27914
+Attributes:   53
+              home_team_goals_difference
+              away_team_goals_difference
+              games_won_home_team
+              games_won_away_team
+              games_against_won
+              games_against_lost
+              OVA_home
+              ATT_home
+              MID_home
+              DEF_home
+              TransferBudget_home
+              Speed_home
+              Dribbling_home
+              BuildPassing_home
+              BuildPositioning_home
+              Crossing_home
+              ChancePassing_home
+              Shooting_home
+              ChancePositioning_home
+              Aggression_home
+              Pressure_home
+              TeamWidth_home
+              DefenderLine_home
+              DP_home
+              IP_home
+              SAA_home
+              TAA_home
+              OVA_away
+              ATT_away
+              MID_away
+              DEF_away
+              TransferBudget_away
+              Speed_away
+              Dribbling_away
+              BuildPassing_away
+              BuildPositioning_away
+              Crossing_away
+              ChancePassing_away
+              Shooting_away
+              ChancePositioning_away
+              Aggression_away
+              Pressure_away
+              TeamWidth_away
+              DefenderLine_away
+              DP_away
+              IP_away
+              SAA_away
+              TAA_away
+              outcome_of_match
+              ova_diff
+              att_diff
+              mid_diff
+              def_diff
+Evaluation mode:    10-fold cross-validation
+
+
+
+=== Attribute selection 10 fold cross-validation (stratified), seed: 1 ===
+
+average merit      average rank  attribute
+ 0.106 +- 0.001      1   +- 0       50 ova_diff
+ 0.091 +- 0.001      2.3 +- 0.46    52 mid_diff
+ 0.09  +- 0.001      2.7 +- 0.46    53 def_diff
+ 0.077 +- 0.001      4   +- 0       51 att_diff
+ 0.049 +- 0          5   +- 0       24 DP_home
+ 0.043 +- 0.001      6.1 +- 0.3     45 DP_away
+ 0.041 +- 0.001      6.9 +- 0.3      1 home_team_goals_difference
+ 0.036 +- 0.001      8.1 +- 0.3      2 away_team_goals_difference
+ 0.033 +- 0.001      8.9 +- 0.3      3 games_won_home_team
+ 0.031 +- 0.001     10.6 +- 0.66    11 TransferBudget_home
+ 0.031 +- 0.001     10.6 +- 0.49     7 OVA_home
+ 0.029 +- 0.001     12.2 +- 0.87     4 games_won_away_team
+ 0.028 +- 0.001     12.6 +- 0.49    25 IP_home
+ 0.027 +- 0.001     14.1 +- 0.3      9 MID_home
+ 0.025 +- 0.001     15.5 +- 0.67    28 OVA_away
+ 0.025 +- 0.001     15.5 +- 0.67    32 TransferBudget_away
+ 0.023 +- 0.001     17.3 +- 1       10 DEF_home
+ 0.023 +- 0.001     18.7 +- 1.1     30 MID_away
+ 0.023 +- 0.001     18.8 +- 0.87    31 DEF_away
+ 0.022 +- 0.001     19.4 +- 0.8     46 IP_away
+ 0.021 +- 0.001     20.8 +- 0.98     8 ATT_home
+ 0.02  +- 0.001     21.9 +- 0.3      5 games_against_won
+ 0.018 +- 0         23.4 +- 0.49     6 games_against_lost
+ 0.018 +- 0.001     23.6 +- 0.49    29 ATT_away
+ 0.001 +- 0         26.4 +- 1.36    33 Speed_away
+ 0.001 +- 0         26.5 +- 1.28    34 Dribbling_away
+ 0.001 +- 0         27.1 +- 1.92    36 BuildPositioning_away
+ 0.001 +- 0         28.4 +- 1.02    35 BuildPassing_away
+ 0.001 +- 0         29.5 +- 1.5     13 Dribbling_home
+ 0.001 +- 0         29.8 +- 1.83    12 Speed_home
+ 0.001 +- 0         30.7 +- 1.27    15 BuildPositioning_home
+ 0.001 +- 0         31.5 +- 2.73    48 TAA_away
+ 0.001 +- 0         32   +- 1.41    14 BuildPassing_home
+ 0.001 +- 0         34.1 +- 0.3     26 SAA_home
+ 0.001 +- 0         36.2 +- 0.75    21 Pressure_home
+ 0.001 +- 0         37.2 +- 7.51    47 SAA_away
+ 0     +- 0         37.6 +- 1.5     42 Pressure_away
+ 0     +- 0         37.8 +- 0.6     20 Aggression_home
+ 0     +- 0         38.2 +- 2.18    23 DefenderLine_home
+ 0     +- 0         40.4 +- 1.62    41 Aggression_away
+ 0     +- 0         41   +- 1.55    17 ChancePassing_home
+ 0     +- 0         42.4 +- 2.06    18 Shooting_home
+ 0     +- 0         42.7 +- 1.68    16 Crossing_home
+ 0     +- 0         43.5 +- 1.2     19 ChancePositioning_home
+ 0     +- 0         45.7 +- 1.49    40 ChancePositioning_away
+ 0     +- 0         45.7 +- 2.05    38 ChancePassing_away
+ 0     +- 0         46.6 +- 1.69    39 Shooting_away
+ 0     +- 0         47.2 +- 1.4     37 Crossing_away
+ 0     +- 0         47.7 +- 2.05    43 TeamWidth_away
+ 0     +- 0         49.3 +- 1.49    22 TeamWidth_home
+ 0     +- 0         50.8 +- 0.4     44 DefenderLine_away
+ 0     +- 0         52   +- 0       27 TAA_home
+
